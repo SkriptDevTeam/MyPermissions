@@ -1,0 +1,24 @@
+groups:
+  Player:
+    prefix: '&e[Player] '
+    suffix: '&f:'
+    tag: '&eP &7'
+    permissions:
+    - permission.player
+  Vip:
+    prefix: '&6[Vip] '
+    suffix: '&f:'
+    tag: '&6V &7'
+    inheritance:
+    - Player
+    permissions:
+    - permission.vip
+  Admin:
+    prefix: '&c[Admin] '
+    suffix: '&f:'
+    tag: '&cA &7'
+    inheritance:
+    - Player
+    - Vip
+    permissions:
+    - permission.admin
