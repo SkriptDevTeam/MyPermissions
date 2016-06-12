@@ -44,14 +44,12 @@ function "reloadPermissions" {}:
 	make all players see {_player}'s prefix as "%colored {_prefix}%"
 	make all players see {_player}'s suffix as "%colored {_suffix}%"
 on script load:
-	if file "plugins/MyPermissions/groups.yml" doesn't exists:
-		create file "plugins/MyPermissions/groups.yml"
-		download from "http://pastebin.com/raw.php?i=vHyPMKww" to "plugins/MyPermissions/groups.yml"
-	if file "plugins/MyPermissions/players.yml" doesn't exists:
-		create file "plugins/MyPermissions/players.yml"
-		download from "http://pastebin.com/raw.php?i=xpK0YGQz" to "plugins/MyPermissions/players.yml"
 	if file "plugins/MyPermissions/config.yml" doesn't exists:
-		create file "plugins/MyPermissions/config.yml"
-		download from "http://pastebin.com/raw.php?i=rLSpBmgL" to "plugins/MyPermissions/config.yml"
-
+		download from "https://raw.githubusercontent.com/SkriptDevTeam/MyPermissions/master/config.yml" to "plugins/MyPermissions/config.yml"
+	if file "plugins/MyPermissions/groups.yml" doesn't exists:
+		download from "https://raw.githubusercontent.com/SkriptDevTeam/MyPermissions/master/groups.yml" to "plugins/MyPermissions/groups.yml"
+	if file "plugins/MyPermissions/messages.yml" doesn't exists:
+		download from "https://raw.githubusercontent.com/SkriptDevTeam/MyPermissions/master/players.yml" to "plugins/MyPermissions/messages.yml"
+	if file "plugins/MyPermissions/players.yml" doesn't exists:
+		download from "https://raw.githubusercontent.com/SkriptDevTeam/MyPermissions/master/players.yml" to "plugins/MyPermissions/players.yml"
   
