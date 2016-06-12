@@ -1,0 +1,8 @@
+players:
+  Notch:
+    prefix: '&4[NOTCH] '
+    suffix: '&c:'
+    tag: '&4&lN &c'
+    group: Admin
+    permissions:
+    - kill.me
