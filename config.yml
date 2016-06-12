@@ -1,0 +1,6 @@
+default-group: 'User'
+debug: true # czy ma debuga pokazywac
+auto-update: true # auto-update'y (w skQ da sie)
+auto-refresh: true # co ile ma rangi odswiezac dla wszystkich graczy
+refresh-time: 10 # co ile minut ma odswiezac @up
+uuid: true # wsparcie uuid
