@@ -1,0 +1,8 @@
+messages:
+  admin: # dla admina
+    setrank: '&eNadano dla gracza &7{PLAYER} &erange: &7{RANK}&e!'
+  user: # dla user'a
+    getrank: '&eUtrzymano range &7{RANK} &eod &7{ADMIN}&e!'
+  global: # dla wszystkich
+    no-perm: '&eBrak uprawnien!'
+    tag: '&7[&6TAG&7] '
