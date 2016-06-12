@@ -1,0 +1,57 @@
+script options:
+	$ use permissions
+function "reloadPermissions" {}:
+	set {_player} to arg{1}
+	wait 1 tick
+	
+	#przydzielanie uprawnień
+	set {_group} to value "players.%{_player}%.group" get of "plugins/MyPermissions/players.yml"
+	if {_group} is not set:
+		set {_group} to valuy7de "config.defaultGroup" get of "plugins/MyPermissions/config.yml"
+		set "players.%{_player}%.group" to "%{_group}%" in yaml file "plugins/MyPermissions/players.yml"
+	set {_permissions::*} to value list "groups.%{_group}%.permissions" get of "plugins/MyPermissions/groups.yml"
+	set {_playerpermissions::*} to value list "players.%{_player}%.permissions" get of "plugins/MyPermissions/players.yml"
+	add {_playerpermissions::*} to {_permissions::*}
+	set {_inheritances::*} to value list "groups.%{_group}%.inheritance" get of "plugins/MyPermissions/groups.yml"
+	loop {_inheritances::*}:
+		set {_inheritances::%loop-value-1%::*} to value list "groups.%loop-value-1%.permissions" get of "plugins/MyPermissions/groups.yml"
+		loop {_inheritances::%loop-value-1%::*}:
+			if {_player}'s permissions doesn't contain loop-value-2:
+				add loop-value-2 to {_permissions::*}
+	loop {_permissions::*}:
+		add loop-value to {_player}'s permissions
+		send "&4&lDEBUG: &c%loop-value% &7(permission)" to {_player}
+	#ustawianie tagów
+	set {_tag} to value "groups.%{_group}%.tag" get of "plugins/MyPermissions/groups.yml"
+	set {_tablist} to value "groups.%{_group}%.tablist" get of "plugins/MyPermissions/groups.yml"
+	set {_prefix} to value "groups.%{_group}%.prefix" get of "plugins/MyPermissions/groups.yml"
+	set {_suffix} to value "groups.%{_group}%.suffix" get of "plugins/MyPermissions/groups.yml"
+	set {_playertag} to value "players.%{_player}%.tag" get of "plugins/MyPermissions/players.yml"
+	set {_playertablist} to value "players.%{_player}%.tablist" get of "plugins/MyPermissions/players.yml"
+	set {_playerprefix} to value "players.%{_player}%.prefix" get of "plugins/MyPermissions/players.yml"
+	set {_playersuffix} to value "players.%{_player}%.suffix" get of "plugins/MyPermissions/players.yml"
+	if {_playertag} is set:
+		set {_tag} to {_playertag}
+	if {_playertablist} is set:
+		set {_tablist} to {_playertablist}
+	if {_playerprefix} is set:
+		set {_prefix} to {_playerprefix}
+	if {_playersuffix} is set:
+		set {_suffix} to {_playersuffix}
+	replace all "{player}" with "%{_player}%" in {_tablist}
+	make all players see {_player}'s tag as "%colored {_tag}%"
+	make all players see {_player}'s tablist name as "%colored {_tablist}%"
+	make all players see {_player}'s prefix as "%colored {_prefix}%"
+	make all players see {_player}'s suffix as "%colored {_suffix}%"
+on script load:
+	if file "plugins/MyPermissions/groups.yml" doesn't exists:
+		create file "plugins/MyPermissions/groups.yml"
+		download from "http://pastebin.com/raw.php?i=vHyPMKww" to "plugins/MyPermissions/groups.yml"
+	if file "plugins/MyPermissions/players.yml" doesn't exists:
+		create file "plugins/MyPermissions/players.yml"
+		download from "http://pastebin.com/raw.php?i=xpK0YGQz" to "plugins/MyPermissions/players.yml"
+	if file "plugins/MyPermissions/config.yml" doesn't exists:
+		create file "plugins/MyPermissions/config.yml"
+		download from "http://pastebin.com/raw.php?i=rLSpBmgL" to "plugins/MyPermissions/config.yml"
+
+  
